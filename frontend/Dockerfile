@@ -4,7 +4,7 @@ WORKDIR /app
 
 # Copiamos package.json y package-lock.json
 COPY package*.json ./
-RUN npm install
+RUN npm ci
 
 # Copiamos el resto del código
 COPY . .

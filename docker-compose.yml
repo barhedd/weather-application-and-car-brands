@@ -26,6 +26,22 @@ services:
     ports:
       - "5000:8080"
 
+  backend_tests:
+    image: mcr.microsoft.com/dotnet/sdk:8.0
+    container_name: carbrands_backend_tests
+    working_dir: /app
+    volumes:
+      - ./backend:/app
+    environment:
+      ASPNETCORE_ENVIRONMENT: Development
+      ConnectionStrings__DefaultConnection: Host=postgres;Port=5432;Database=${DB_NAME};Username=${DB_USER};Password=${DB_PASSWORD}
+    depends_on:
+      - postgres
+    command: >
+      sh -c "
+        dotnet test CarBrands.Tests/CarBrands.Tests.csproj --logger:console &&
+        dotnet test CarBrands.Tests.Integration/CarBrands.Tests.Integration.csproj --logger:console
+      "
   frontend:
     build:
       context: ./frontend
@@ -37,6 +53,16 @@ services:
       WEATHER_API_KEY: ${WEATHER_API_KEY}
     ports:
       - "3000:3000"
+
+  frontend_tests:
+    image: node:24
+    container_name: weather_app_frontend_tests
+    working_dir: /app
+    volumes:
+      - ./frontend:/app
+    environment:
+      WEATHER_API_KEY: ${WEATHER_API_KEY}
+    command: sh -c "npm install && npm test"
 
 volumes:
   postgres_data:

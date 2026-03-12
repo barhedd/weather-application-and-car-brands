@@ -85,6 +85,15 @@ WEATHER_API_KEY=<TU_API_KEY_DE_OPENWEATHER>
 
 Reemplaza ```<TU_API_KEY_DE_OPENWEATHER>``` con tu clave de OpenWeatherMap.
 
+**Nota sobre la API Key de OpenWeather:**
+
+- La clave tarda aproximadamente 20 a 30 minutos en activarse luego de ser creada.
+- Si intentas usarla antes de ese tiempo, recibirás un error de Unauthorized (401).
+- Para crear la clave:
+  - Regístrate en OpenWeatherMap
+  - Ve a API Keys en tu perfil.
+  - Crea una nueva key y copia el valor en tu .env.
+
 ---
 
 ### 3. Construir y levantar los contenedores
@@ -116,8 +125,10 @@ Si quieres correr los tests dentro de los contenedores:
 
 ```bash
 # Frontend
-docker-compose run frontend npm test
+docker-compose run --rm frontend_tests
+# Recuerda que la API key de OpenWeatherMap puede tardar 20-30 minutos en activarse.
+# Antes de eso, los tests que dependan de la API pueden fallar con error de Unauthorized.
 
 # Backend
-docker-compose run backend dotnet test
+docker-compose run --rm backend_tests
 ```
