@@ -6,7 +6,12 @@ export async function GET(req: Request) {
 
   const apiKey = process.env.WEATHER_API_KEY;
 
-  console.log("API KEY:", process.env.WEATHER_API_KEY);
+  if (!apiKey) {
+    return NextResponse.json(
+      { error: "Weather API key not configured" },
+      { status: 500 }
+    );
+  }
 
   const res = await fetch(
     `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`
