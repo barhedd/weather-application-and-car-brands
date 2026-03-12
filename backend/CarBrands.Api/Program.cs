@@ -1,6 +1,9 @@
 using CarBrands.Infrastructure.DataSeed;
 using CarBrands.Infrastructure.Contexts;
 using Microsoft.EntityFrameworkCore;
+using CarBrands.Application.Features.MarcasAutos.Interfaces;
+using CarBrands.Infrastructure.Persistence.Repositories;
+using CarBrands.Application.Common.Abstractions.Events;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -10,6 +13,16 @@ builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
+// Repositories
+builder.Services.AddScoped<IMarcaAutoRepository, MarcaAutoRepository>();
+
+// Queries
+builder.Services.Scan(scan => scan
+    .FromApplicationDependencies()
+    .AddClasses(classes => classes.AssignableTo(typeof(IQueryHandler<,>)))
+    .AsImplementedInterfaces()
+    .WithScopedLifetime());
 
 builder.Services.AddDbContext<CarBrandsContext>(options =>
     options.UseNpgsql(
