@@ -11,23 +11,31 @@ export default function WeatherSearch() {
   const [error, setError] = useState("")
 
   const handleSearch = async () => {
-    try {
-      setError("")
-      const data = await fetchWeather(city)
-      setWeather(data)
-    } catch {
-      setWeather(null)
-      setError("City not found")
-    }
+  // Validación de campo vacío
+  if (!city.trim()) {
+    setWeather(null)
+    setError("Por favor ingresa el nombre de una ciudad")
+    return
   }
+
+  try {
+    setError("")
+    const data = await fetchWeather(city)
+    setWeather(data)
+  } catch (err: any) {
+    setWeather(null)
+    // El error ya tiene un mensaje descriptivo desde fetchWeather
+    setError(err.message)
+  }
+}
 
   return (
     <div className="flex flex-col items-center">
 
-      <div className="flex gap-2">
+      <div className="flex gap-2 mt-4">
         <input
           className="border rounded-lg p-2"
-          placeholder="Enter city"
+          placeholder="Ingresa el nombre de la ciudad"
           value={city}
           onChange={(e) => setCity(e.target.value)}
         />
@@ -36,14 +44,13 @@ export default function WeatherSearch() {
           onClick={handleSearch}
           className="bg-blue-500 text-white px-4 py-2 rounded-lg"
         >
-          Search
+          Buscar
         </button>
       </div>
 
       {error && <p className="text-red-500 mt-4">{error}</p>}
 
       {weather && <WeatherCard {...weather} />}
-
     </div>
   )
 }

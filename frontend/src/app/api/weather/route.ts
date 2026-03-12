@@ -25,6 +25,7 @@ export async function GET(req: Request) {
   const data = await res.json();
 
   return NextResponse.json({
+    city,
     temperature: data.main.temp,
     humidity: data.main.humidity,
     description: data.weather[0].description,
