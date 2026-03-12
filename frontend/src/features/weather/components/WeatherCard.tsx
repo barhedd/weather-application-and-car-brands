@@ -12,7 +12,7 @@ export default function WeatherCard({
 
       <p>Temperatura: {temperature} °C</p>
       <p>Humedad: {humidity}%</p>
-      <p>Descripcion: {description}</p>
+      <p>Descripción: {description}</p>
     </div>
   )
 }
