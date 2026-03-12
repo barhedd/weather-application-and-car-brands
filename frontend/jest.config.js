@@ -8,4 +8,4 @@ module.exports = {
     "^@/services/(.*)$": "<rootDir>/src/services/$1"
   },
   setupFilesAfterEnv: ["<rootDir>/jest.setup.ts"],
-}
+};
