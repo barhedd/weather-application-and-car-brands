@@ -20,8 +20,14 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\CardBrands.Application\CardBrands.Application.csproj" />
-    <ProjectReference Include="..\CardBrands.Domain\CardBrands.Domain.csproj" />
+    <ProjectReference Include="..\CarBrands.Application\CarBrands.Application.csproj" />
+    <ProjectReference Include="..\CarBrands.Domain\CarBrands.Domain.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="DataSeed\*.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
 
 </Project>

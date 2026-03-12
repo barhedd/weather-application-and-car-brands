@@ -1,4 +1,5 @@
-using CardBrands.Infrastructure.Contexts;
+using CarBrands.Infrastructure.DataSeed;
+using CarBrands.Infrastructure.Contexts;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -10,13 +11,37 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-builder.Services.AddDbContext<CardBrandsContext>(options =>
+builder.Services.AddDbContext<CarBrandsContext>(options =>
     options.UseNpgsql(
         builder.Configuration.GetConnectionString("DefaultConnection")
     )
 );
 
 var app = builder.Build();
+
+// Apply migrations and data seed to database
+using (var scope = app.Services.CreateScope())
+{
+    var services = scope.ServiceProvider;
+    var dbContext = services.GetRequiredService<CarBrandsContext>();
+
+    var retries = 5;
+    while (retries > 0)
+    {
+        try
+        {
+            dbContext.Database.Migrate();
+            await dbContext.SeedAsync();
+
+            break;
+        }
+        catch
+        {
+            retries--;
+            Thread.Sleep(5000);
+        }
+    }
+}
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())

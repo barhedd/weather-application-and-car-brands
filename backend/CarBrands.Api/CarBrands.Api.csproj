@@ -18,8 +18,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\CardBrands.Application\CardBrands.Application.csproj" />
-    <ProjectReference Include="..\CardBrands.Infrastructure\CardBrands.Infrastructure.csproj" />
+    <ProjectReference Include="..\CarBrands.Application\CarBrands.Application.csproj" />
+    <ProjectReference Include="..\CarBrands.Infrastructure\CarBrands.Infrastructure.csproj" />
   </ItemGroup>
-
 </Project>

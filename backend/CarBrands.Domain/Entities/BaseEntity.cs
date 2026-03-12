@@ -1,4 +1,4 @@
-﻿namespace CardBrands.Domain.Entities;
+﻿namespace CarBrands.Domain.Entities;
 
 public class BaseEntity
 {

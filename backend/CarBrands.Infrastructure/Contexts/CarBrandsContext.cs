@@ -1,11 +1,11 @@
-﻿using CardBrands.Domain.Entities;
+﻿using CarBrands.Domain.Entities;
 using Microsoft.EntityFrameworkCore;
 using System.Linq.Expressions;
 
-namespace CardBrands.Infrastructure.Contexts;
+namespace CarBrands.Infrastructure.Contexts;
 
-public class CardBrandsContext(
-    DbContextOptions<CardBrandsContext> options) : DbContext(options)
+public class CarBrandsContext(
+    DbContextOptions<CarBrandsContext> options) : DbContext(options)
 {
     public DbSet<MarcaAuto> MarcaAutos { get; set; }
 
@@ -14,7 +14,7 @@ public class CardBrandsContext(
         base.OnModelCreating(modelBuilder);
 
         // Apply configurations
-        modelBuilder.ApplyConfigurationsFromAssembly(typeof(CardBrandsContext).Assembly);
+        modelBuilder.ApplyConfigurationsFromAssembly(typeof(CarBrandsContext).Assembly);
 
         // Aplicar Soft Delete global filter
         foreach (var entityType in modelBuilder.Model.GetEntityTypes())

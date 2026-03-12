@@ -1,8 +1,8 @@
-﻿using CardBrands.Domain.Entities;
+﻿using CarBrands.Domain.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace CardBrands.Infrastructure.EntityConfigurations;
+namespace CarBrands.Infrastructure.EntityConfigurations;
 
 public class BaseEntityConfiguration<TEntity> : IEntityTypeConfiguration<TEntity>
     where TEntity : BaseEntity

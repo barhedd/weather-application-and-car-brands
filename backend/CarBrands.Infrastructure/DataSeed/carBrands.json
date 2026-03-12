@@ -1,0 +1,42 @@
+[
+  {
+    "Id": "de7990f8-9a1d-4f0e-b6a2-a6294e814a74",
+    "Name": "Toyota",
+    "OriginCountry": "Jap�n",
+    "FoundingDate": "1937-08-28T00:00:00Z",
+    "WebSite": "https://www.toyota.com/",
+    "Value": 316000000000,
+    "CreatedDate": "2026-03-11T00:00:00Z",
+    "CreatedBy": "SYSTEM"
+  },
+  {
+    "Id": "40b5f12c-f3ee-4dfd-b2a6-cb11c4cefe2e",
+    "Name": "BMW",
+    "OriginCountry": "Alemania",
+    "FoundingDate": "1916-03-07T00:00:00Z",
+    "WebSite": "https://www.bmw.com.sv/",
+    "Value": 64000000000,
+    "CreatedDate": "2026-03-11T00:00:00Z",
+    "CreatedBy": "SYSTEM"
+  },
+  {
+    "Id": "b59d0b09-c989-4436-9fbb-4b154e6c34cb",
+    "Name": "Ford",
+    "OriginCountry": "Estados Unidos",
+    "FoundingDate": "1903-06-16T00:00:00Z",
+    "WebSite": "https://www.ford.com/",
+    "Value": 47000000000,
+    "CreatedDate": "2026-03-11T00:00:00Z",
+    "CreatedBy": "SYSTEM"
+  },
+  {
+    "Id": "fc6053c9-6079-4359-ac08-6321d87e91bf",
+    "Name": "Ferrari",
+    "OriginCountry": "Italia",
+    "FoundingDate": "1929-11-16T00:00:00Z",
+    "WebSite": "https://www.ferrari.com/en-SV",
+    "Value": 80000000000,
+    "CreatedDate": "2026-03-11T00:00:00Z",
+    "CreatedBy": "SYSTEM"
+  }
+]
