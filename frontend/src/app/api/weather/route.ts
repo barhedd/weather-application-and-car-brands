@@ -6,12 +6,15 @@ export async function GET(req: Request) {
 
   const apiKey = process.env.WEATHER_API_KEY;
 
+  console.log("API KEY:", process.env.WEATHER_API_KEY);
+
   const res = await fetch(
     `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`
   );
 
   if (!res.ok) {
-    return NextResponse.json({ error: "City not found" }, { status: 404 });
+    const error = await res.json()
+    return NextResponse.json(error, { status: res.status })
   }
 
   const data = await res.json();
